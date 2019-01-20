@@ -1,0 +1,123 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="card-row clearfix">
+					<div class="col-md-4 col-sm-6">
+						<div class="card">
+							<a href="{% url 'profile' employee.id %}">
+                        {% if employee.avatar %}
+                            <img src="{{ employee.avatar.url }}" height="350" width="280"class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+						</div>
+
+						<div class="progress">
+  							
+						</div>
+					</div>
+                    {% if user.is_staff %}
+                    <a  href="{% url 'post_edit' employee.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    {% endif %}
+
+					<div class="col-md-6 col-sm-8">
+						<div class="panel panel-default">
+							<ul class="list-group">
+				  				<li class="list-group-item"><i class="material-icons left"></i> ФИО:{{employee.user.get_full_name}}</li>
+								<li class="list-group-item"><i class="material-icons left"></i> Должность:{{ employee.job }}</li>
+								<li class="list-group-item"><i class="material-icons left"></i> Дата рождения:{{ employee.birth_date }}</li>
+								<li class="list-group-item"><i class="material-icons left"></i> Отдел/Кабинет: {{ employee.department }}/{{ employee.location }}</li>
+								<li class="list-group-item"><i class="material-icons left"></i> Образование:{{ employee.education }}</li>
+								<li class="list-group-item"><i class="material-icons left"></i> Дата приема на работу:{{ employee.date_applyied }}</li>					
+								<li class="list-group-item"><i class="material-icons left"></i> Опыт работы (по желанию):{{employee.job_duscription}}</li>								
+							</ul>
+						</div>
+					</div>
+	</div>
+	<div class="container w">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="list-group">
+				 	<a href="#" class="list-group-item active text-center" "waves-effect waves-light btn"><i class="material-icons left btn btn-info btn-primary btn-sm" type="button" data-toggle="modal" data-target="#myModal"></i> Знания</a> <div id="myModal" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header"><button class="close" type="button" data-dismiss="modal"></button>
+								<h4 class="modal-title">Знание</h4>
+								</div>
+								<div class="modal-body">Это основные закономерности предметной области, позволяющие человеку решать конкретные производственные, научные и другие задачи, т.е. факты, понятия, суждения, образы, взаимосвязи, оценки, правила, алгоритмы, эвристики, а также стратегии принятия решений в этой области. Знания – это элементы информации, связанные между собой и с внешним миром.</div>
+								<div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>
+								</div>
+							</div>
+						</div>
+					<a href="#" class="list-group-item">
+              					<ul> 
+                  				{% for k in employee.job.knowledge.all %}
+              					<li>
+                      					{{ k }}  
+             					</li>
+                  				{% endfor %}
+              					</ul></a>
+					
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+				 	<a href="#" class="list-group-item active text-center" "waves-effect waves-light btn"><i class="material-icons left btn btn-info btn-primary btn-sm" type="button" data-toggle="modal" data-target="#myModal"></i> Умения</a> <div id="myModal" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+								<h4 class="modal-title">Умение</h4>
+								</div>
+								<div class="modal-body">Это освоенный человеком способ выполнения действия, обеспеченный некоторой совокупностью знаний. Умение выражается в способности осознанно применить знания на практике.</div>
+								<div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>
+								</div>
+							</div>
+						</div>
+					<a href="#" class="list-group-item"><ul> 
+                  	{% for p in employee.job.proficiency.all %}
+              				<li>
+                      			{{ p }}  
+             				</li>
+                  	{% endfor %}
+              		</ul></a>
+				</div>
+			</div>
+
+			<div class="col-lg-4">
+				<div class="list-group">
+				 	<a href="#" class="list-group-item active text-center" "waves-effect waves-light btn"><i class="material-icons left btn btn-info btn-primary btn-sm" type="button" data-toggle="modal" data-target="#myModal"></i> Навыки</a> <div id="myModal" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+								<h4 class="modal-title">Навык</h4>
+								</div>
+								<div class="modal-body">Это автоматизированные компоненты сознательного действия человека, которые вырабатываются в процессе его выполнения. Навык возникает как сознательно автоматизируемое действие и затем функционирует как автоматизированный способ его выполнения. То, что данное действие стало навыком, означает, что индивид в результате упражнения приобрел возможность осуществлять данную операцию, не делая ее выполнение своей сознательной целью.</div>
+								<div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>
+								</div>
+							</div>
+						</div>
+					<a href="#" class="list-group-item"><ul> 
+                  	{% for s in employee.job.skills.all %}
+              				<li>
+                      			{{ s }}  
+             				</li>
+                  	{% endfor %}
+              		</ul></a>
+					
+				</div>
+			</div>			
+		</div>
+      
+
+	</div>				
+
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+
+ {% endblock %}

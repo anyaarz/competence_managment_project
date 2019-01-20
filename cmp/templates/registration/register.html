@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+    <h1>Создание сотрудника</h1>
+    <p>Пожалуйста заполните данную форму для создания сотрудника:</p>
+    <form action="." method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Создать"></p>
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Система управления компетенциями</h1>
+
+  <p>Добро пожаловать в  <em>CMP</em>, простой интерфейс для управления компетенциями сотрудников.</p>
+
+<h2>Динамические данные</h2>
+
+  <p>Количество зарегестрированных данных:</p>
+  <ul>
+    <li><strong>Сотрудники:</strong> {{ num_employee }}</li>
+    <li><strong>Должности:</strong> {{ num_job }}</li>
+    <li><strong>Знания:</strong> {{ num_knowledge }}</li>
+    <li><strong>Умения:</strong> {{ num_proficiency }}</li>
+    <li><strong>Навыки:</strong> {{ num_skills }}</li>
+  </ul>
+
+{% endblock %}

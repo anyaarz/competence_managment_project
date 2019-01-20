@@ -1,0 +1,65 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <div class="jumbotron">
+    <div class="container">
+      <h1>Знания, Умения, Нывыки</h1>   
+    </div>
+  </div>
+  <div class="container w">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="list-group">
+          <a href="{% url 'post_new_k' %}" class="list-group-item active text-center" "waves-effect waves-light btn">Знания <span class="glyphicon glyphicon-plus"></span></a>
+          <a href="#" class="list-group-item">
+          <ul> 
+                  {% for k in knowledge %}
+              <li>
+                      {{ k }} 
+                    
+             </li>
+                  {% endfor %}
+              </ul></a>
+          
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="list-group">
+          <a href="{% url 'post_new_p' %}" class="list-group-item active text-center" "waves-effect waves-light btn">Умения <span class="glyphicon glyphicon-plus"></span></a>
+          <a href="#" class="list-group-item">
+          <ul> 
+                  {% for p in proficiency %}
+              <li>
+                       {{ p }}
+                    
+             </li>
+                  {% endfor %}
+              </ul></a>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="list-group">
+          <a href="{% url 'post_new_s' %}" class="list-group-item active text-center" "waves-effect waves-light btn">Навыки <span class="glyphicon glyphicon-plus"></span></a>
+          <a class="list-group-item">
+            
+              <ul> 
+                  {% for s in skills %}
+              <li>
+                      {{ s }} 
+                    
+             </li>
+                  {% endfor %}
+              </ul>             
+          </a>
+        </div>
+      </div>      
+    </div>
+
+  </div>        
+
+{% endblock %}
+
+<!----!>

@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+    {% block content %}
+        <h1>Данные о должности</h1>
+        <form method="POST" class="post-form">
+
+            {{ form.as_p}}   
+            {% csrf_token %}
+            <button type="submit" class="save btn btn-Success">Сохранить</button>
+        </form>
+    {% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+  {% block title %}<title>Competence system maneger</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+
+<body>
+    <!-- Navigation -->
+    <header>
+    <nav class="navbar navbar-default menu">
+      <div class="container">
+        <div class="navbar-header">
+          {% load static %}
+           <a class="navbar-brand-right" href="{% url 'index' %}"><img src="{% static 'img/logo.jpg'%}" height="120" width="120"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          {% if user.is_staff %} 
+            
+            <li><a href="{% url 'competences' %}">ЗУН</a></li>
+            <li><a href="{% url 'employees' %}">Сотрудники</a></li>
+            <li><a href="{% url 'jobs' %}">Должность</a></li>
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'employees' %}">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
+                </div>
+                <button type="submit" class="btn btn-default">Поиск</button>
+            </form>
+          {% elif user.is_authenticated %}
+            <li><a href="{% url 'profile' pk=request.user.employee.pk %}">Мой профиль</a></li>
+          {% endif %}
+          {% if user.is_authenticated %}
+            <li>{{ user.get_full_name }}</li>
+            <li><a href="{% url 'logout'%}?next={{request.path}}">Выйти</a></li>   
+          {% else %}
+            <li><a href="{% url 'login'%}?next={{request.path}}">Войти</a></li>   
+          {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+      
+      <div class="content container">
+            <div class="row">
+            {% block content %}{% endblock %}
+          </div>
+      </div>
+
+
+  </body>
+
+</html>
