@@ -1,0 +1,75 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	color: #311b92;
+	background: #e8eaf6;
+	font-weight: normal;
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+header{
+	margin: 50px 0 5px;
+}
+
+
+
+.menu{
+	background: #fefefe;
+	border: 0;
+	box-shadow: 0 0 70px rgba(0, 0, 0, .19);
+	padding: 3px 0;
+}
+
+.navbar-brand{
+	padding-right: 80px;
+}
+
+.navbar-brand img{
+	position: relative;
+	top: -10px;
+}
+
+.navbar-default .navbar-nav > li > a{
+	color: #303f9f;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav:not(.icons) > li > a:hover{
+	border-bottom: 2px solid #303f9f;
+	color: #7986cb;
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+	
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px) {
+	.menu{
+		padding: 1;
+	}
+	.navbar-brand img{
+		top: -15px;
+		max-height: 50px;
+	}
+	.navbar-default .navbar-nav > li.active-link > a{
+	border-bottom: 0;
+	}
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+}
